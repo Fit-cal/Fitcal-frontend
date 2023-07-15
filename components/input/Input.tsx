@@ -9,6 +9,7 @@ type InputProps = {
     isInvalid?: boolean
     isWarn?: boolean
     style?: StyleProp<ViewStyle>
+    secure?: boolean
 }
 
 const style = StyleSheet.create({
@@ -54,6 +55,7 @@ const Input = (props: InputProps) => {
                     style={style.input}
                     placeholder={props.placeholder}
                     placeholderTextColor={"grey"}
+                    secureTextEntry={props.secure ? props.secure : false}
                 />
             </View>
         )
@@ -66,6 +68,7 @@ const Input = (props: InputProps) => {
                     style={style.input}
                     placeholder={props.placeholder}
                     placeholderTextColor={"grey"}
+                    secureTextEntry={props.secure ? props.secure : false}
                 />
                 <Icon name={props.rightIcon}
                     color={"white"}
@@ -86,6 +89,7 @@ const Input = (props: InputProps) => {
                 style={style.input} 
                 placeholder={ props.placeholder }
                 placeholderTextColor={"grey"}
+                secureTextEntry={props.secure ? props.secure : false}
             />
         </View>
     )

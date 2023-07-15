@@ -18,8 +18,15 @@ const Home = () => {
                     Fit-Cal
             </Text>
 
-            <Input placeholder='Username' leftIcon='user' />
-            <Input placeholder='Password' leftIcon='lock' />
+            <Input 
+                placeholder='Username'
+                leftIcon='user' 
+            />
+            <Input 
+                placeholder='Password'
+                leftIcon='lock' 
+                secure={true}
+            />
             <Buttons title='Login' />
             <Text style={{
                 color: "white",
