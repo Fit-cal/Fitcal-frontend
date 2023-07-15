@@ -1,4 +1,4 @@
-import { Pressable, View, Button, StyleProp, ViewStyle, StyleSheet } from "react-native"
+import { View, Button, StyleProp, ViewStyle, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 type ButtonProps = {
