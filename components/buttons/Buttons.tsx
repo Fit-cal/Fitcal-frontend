@@ -67,7 +67,7 @@ const Buttons = (props: ButtonProps) => {
                         position: "absolute",
                         left: 35
                     }} />
-            <Button title={props.title} color={ props.color ? props.color : "white" } />
+            <Button title={props.title} color={ props.color ? props.color : "white" } onPress={props.onPress} />
             </View>
         )
     }
@@ -75,7 +75,7 @@ const Buttons = (props: ButtonProps) => {
     if (props.rightIcon) {
         return (
             <View style={props.style ? props.style : style.buttonWithIcon }>
-                <Button title={props.title} color={"white"} />
+                <Button title={props.title} color={"white"} onPress={props.onPress} />
                 <Icon name={props.rightIcon}
                     color={"white"}
                     size={30}
@@ -92,7 +92,7 @@ const Buttons = (props: ButtonProps) => {
     if (props.isDisabled) {
         return (
         <View style={props.style ? props.style : style.disabledButton}>
-            <Button title={props.title} color={ props.color ? props.color : "white" } />
+            <Button title={props.title} color={ props.color ? props.color : "white" } onPress={props.onPress} />
         </View>
 
         )
@@ -100,7 +100,7 @@ const Buttons = (props: ButtonProps) => {
 
     return (
         <View style={props.style ? props.style : style.button}>
-            <Button title={props.title} color={ props.color ? props.color : "white" } />
+            <Button title={props.title} color={ props.color ? props.color : "white" } onPress={props.onPress} />
         </View>
     )
 }
