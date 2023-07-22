@@ -1,6 +1,7 @@
 import { StyleSheet, View, Text } from 'react-native';
+import { User } from '../response_types/GoogleUser';
 
-const Test = () => {
+const Test = (props: {user: User}) => {
     return(
         <View style={ styles.container }>
             <Text style={{color:"white"}}>You are logging in </Text>

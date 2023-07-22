@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from 'react';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { View, Text, Image } from 'react-native';
 import Buttons from '../components/buttons/Buttons';
 import Input from '../components/input/Input';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
+import { User } from '../response_types/GoogleUser';
+import Test from './Test';
 
 WebBrowser.maybeCompleteAuthSession();
 
 const Home = () => {
 
-    const [userInfo, setUserInfo] = useState<any>()
+    const [userInfo, setUserInfo] = useState<User>()
     const [accessToken, setAccessToken] = useState<string | undefined>("");
 
     const [request, response, promptAsync] = Google.useAuthRequest({
-        expoClientId: "184759537711-5f70pj4ga70irmjm9ljvc2nbh7juv6k6.apps.googleusercontent.com",
-        iosClientId: "184759537711-t3llls6iga52nn19ribnumst0bunhep2.apps.googleusercontent.com",
-        androidClientId: "184759537711-pk1sgm5al7gcar55klnfen94ld9r9s86.apps.googleusercontent.com"
+        expoClientId: process.env.EXPO_CLIENT_ID,
+        iosClientId: process.env.IOS_CLIENT_ID,
+        androidClientId: process.env.ANDROID_CLIENT_ID 
     })
+
 
     useEffect(() => {
         if (response?.type === "success"){
@@ -25,31 +28,30 @@ const Home = () => {
         }
     }, [response])
 
+
     const getUserData = async () => {
-        let UserInfoReposnse = await fetch("https://www.googleapis.com/userinfo/v2/me", {
+        const userInfoRes = await axios.get(process.env.GOOGLE_OAUTH_API ? process.env.GOOGLE_OAUTH_API : "undefined", {
             headers: { Authorization: `Bearer ${accessToken}`}
-        })
-
-        UserInfoReposnse.json().then(data => {
-            setUserInfo(data)
-            console.log(data)
-        })
-    }
-
-    const showUserData = () => {
-        if (userInfo) {
-            console.log(userInfo)
+        });
+        
+        if (!userInfoRes) {
             return (
-                <View style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <Text style={{color: "black"}}>{ userInfo.name }</Text>
-                    <Image source={{ uri: userInfo.picture }} style={{width: 50, height: 50 }} />
-                    <Text style={{color: "black"}}>{ userInfo.email }</Text>
+                <View>
+                    <Text>No User Info Was Found</Text>
                 </View>
             )
         }
+        setUserInfo(userInfoRes.data)
+        if (!userInfo){ 
+            return (
+                <Text style={{color:"white"}}>The user data was not read properly</Text>
+            )
+        }
+        return (
+            <Test user={userInfo} />
+        )
     }
 
-    console.log(userInfo)
     if (userInfo) {
         return (
             <View>
@@ -93,13 +95,11 @@ const Home = () => {
             }} >
                 - OR LOGIN WITH -
             </Text>
-            <
-                Buttons 
+            <Buttons 
                 title='Google' 
                 leftIcon='google' 
                 onPress={accessToken ? getUserData : ()=>promptAsync()}
-                />
-            <Buttons title='Twitter' leftIcon='twitter' />
+            />
         </View>
     )
 }
