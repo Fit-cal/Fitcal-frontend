@@ -11,9 +11,9 @@ import Test from './Test';
 WebBrowser.maybeCompleteAuthSession();
 
 const Home = () => {
-
     const [userInfo, setUserInfo] = useState<User>()
     const [accessToken, setAccessToken] = useState<string | undefined>("");
+
 
     const [request, response, promptAsync] = Google.useAuthRequest({
         expoClientId: process.env.EXPO_CLIENT_ID,
@@ -34,6 +34,7 @@ const Home = () => {
             headers: { Authorization: `Bearer ${accessToken}`}
         });
         
+        // replace with a banner
         if (!userInfoRes) {
             return (
                 <View>
@@ -41,26 +42,27 @@ const Home = () => {
                 </View>
             )
         }
+
+
+        // set user info
         setUserInfo(userInfoRes.data)
+
+
+        // TODO: replace with a banner component and redirect to the main page
         if (!userInfo){ 
             return (
                 <Text style={{color:"white"}}>The user data was not read properly</Text>
             )
         }
+    }
+
+
+    if (userInfo) {
         return (
             <Test user={userInfo} />
         )
     }
 
-    if (userInfo) {
-        return (
-            <View>
-                <Text style={{ color: "white" }}>{ userInfo.name }</Text>
-                <Text style={{color:"white"}}>{ userInfo.email }</Text>
-                <Image source={{ uri: userInfo.picture }} style={{ width: 90, height: 90 }} />
-            </View>
-        )
-    }
 
     return(
         <View>
@@ -80,12 +82,15 @@ const Home = () => {
                 placeholder='Username'
                 leftIcon='user' 
             />
+
             <Input 
                 placeholder='Password'
                 leftIcon='lock' 
                 secure={true}
             />
+
             <Buttons title='Login' />
+
             <Text style={{
                 color: "white",
                 textAlign: 'center',
@@ -93,7 +98,9 @@ const Home = () => {
                 marginTop: 15,
                 marginBottom: 15
             }} >
+
                 - OR LOGIN WITH -
+
             </Text>
             <Buttons 
                 title='Google' 
