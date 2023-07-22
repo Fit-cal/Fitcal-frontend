@@ -1,14 +1,14 @@
 import axios from "axios";
 
 
-const apiUrl = process.env.BACKEND_URL;
+const apiUrl = "http://192.168.10.102:8080/api";
 const authUrl = process.env.BACKEND_AUTH_URL;
 
 
 if(!apiUrl) throw new Error("Undefined Url parameter");
 if(!authUrl) throw new Error("Undefined Url parameter");
 
-console.log(apiUrl, authUrl);
+console.log({url: apiUrl, url2: authUrl})
 
 export enum Url { API, AUTH };
 

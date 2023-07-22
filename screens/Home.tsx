@@ -1,14 +1,40 @@
-import { View, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import { View, Text, Image } from 'react-native';
 import Buttons from '../components/buttons/Buttons';
 import Input from '../components/input/Input';
-import Requests, { Url } from '../requests/Requests';
 
+WebBrowser.maybeCompleteAuthSession();
 
 const Home = () => {
-    const verify = async () => {
-        const auth = await Requests.get(Url.AUTH, "/callback");
-        console.log(auth);
+
+    const [userInfo, setUserInfo] = useState<any>()
+    const [accessToken, setAccessToken] = useState<string | undefined>("");
+
+    const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+        expoClientId: "184759537711-5f70pj4ga70irmjm9ljvc2nbh7juv6k6.apps.googleusercontent.com",
+        iosClientId: "184759537711-t3llls6iga52nn19ribnumst0bunhep2.apps.googleusercontent.com",
+        androidClientId: "184759537711-pk1sgm5al7gcar55klnfen94ld9r9s86.apps.googleusercontent.com"
+    })
+
+    const getUserData = () => {
+        if (userInfo) {
+            return (
+                <View>
+                    <Image source={{ uri: userInfo.picture }}  />
+                    <Text>{ userInfo.name }</Text>
+                </View>
+            )
+        }
     }
+
+    useEffect(() => {
+        if (response?.type === "success"){
+            setAccessToken(response.authentication?.accessToken)
+        }
+    }, [response])
+
     return(
         <View>
             <Text
@@ -42,7 +68,13 @@ const Home = () => {
             }} >
                 - OR LOGIN WITH -
             </Text>
-            <Buttons title='Google' leftIcon='google' onPress={verify} />
+            <Text style={{color:"white"}}>{ accessToken ? accessToken : "Fucking login for gods sake" }</Text>
+            <
+                Buttons 
+                title='Google' 
+                leftIcon='google' 
+                onPress={accessToken ? getUserData : ()=>promptAsync({ useProxy: true, showInRecents: true})}
+                />
             <Buttons title='Twitter' leftIcon='twitter' />
         </View>
     )
