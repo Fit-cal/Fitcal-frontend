@@ -1,12 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './screens/Home';
 import Test from './screens/Test';
 import Setting from './screens/Setting';
 
+// web
+// client 184759537711-5f70pj4ga70irmjm9ljvc2nbh7juv6k6.apps.googleusercontent.com
+// secrret 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
+
+// ios
+// client 184759537711-t3llls6iga52nn19ribnumst0bunhep2.apps.googleusercontent.com
+
+
+
 export default function App() {
+
+
   const isLoggedIn = false;
   const Tab = createBottomTabNavigator();
   if (!isLoggedIn) {

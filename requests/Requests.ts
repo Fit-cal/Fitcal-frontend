@@ -8,6 +8,7 @@ const authUrl = process.env.BACKEND_AUTH_URL;
 if(!apiUrl) throw new Error("Undefined Url parameter");
 if(!authUrl) throw new Error("Undefined Url parameter");
 
+console.log({url: apiUrl, url2: authUrl})
 
 export enum Url { API, AUTH };
 

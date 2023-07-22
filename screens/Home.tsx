@@ -1,9 +1,12 @@
+import React, { useEffect, useState } from 'react';
+import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { View, Text, Image } from 'react-native';
 import Buttons from '../components/buttons/Buttons';
 import Input from '../components/input/Input';
 import { useState, useEffect } from 'react';
 
+WebBrowser.maybeCompleteAuthSession();
 
 const Home = () => {
 

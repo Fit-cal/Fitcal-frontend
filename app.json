@@ -16,9 +16,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sabirBarahi.fitcal"
     },
     "android": {
+      "package": "com.sabirBarahi.fitcal",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -26,6 +28,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "owner": "sabi1125",
+    "extra": {
+      "eas": {
+        "projectId": "3fac6005-8f5b-4667-974c-85a66d00970e"
+      }
     }
   }
 }
