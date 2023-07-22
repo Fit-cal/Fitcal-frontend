@@ -8,7 +8,6 @@ const authUrl = process.env.BACKEND_AUTH_URL;
 if(!apiUrl) throw new Error("Undefined Url parameter");
 if(!authUrl) throw new Error("Undefined Url parameter");
 
-console.log({url: apiUrl, url2: authUrl})
 
 export enum Url { API, AUTH };
 
@@ -38,7 +37,5 @@ const Requests = {
     }),
     patch: (url: Url, endpoint: string, body: {}) => axios.patch(baseUrl(url) + endpoint, body, {withCredentials: true, headers: {'Content-Type': 'multipart/form-data'}}),
     delete: (url:string) => axios.delete(url),
-    auth: (headers: {}) => axios.get("https://www.google.apis.com/userinfo/v2/me", { withCredentials: true, headers: headers }),
-    test: (url: string, body: {}) => axios.post(url,body)
 }
 export default Requests;

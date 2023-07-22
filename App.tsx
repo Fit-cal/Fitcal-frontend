@@ -40,7 +40,6 @@ export default function App() {
             borderTopWidth: 0,
           }
         })}>
-          <Tab.Screen name='Test' component={Test} options={{ tabBarBadge: 4 }} />
           <Tab.Screen name='Setting' component={Setting} />
         </Tab.Navigator>
         <StatusBar style="auto" />
