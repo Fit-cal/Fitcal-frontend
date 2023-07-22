@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "fitcal-frontend",
-    "slug": "fitcal-frontend",
+    "name": "fitcal",
+    "scheme": "fitcal",
+    "slug": "fitcal",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
