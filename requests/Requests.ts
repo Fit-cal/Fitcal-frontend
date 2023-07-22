@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const apiUrl = "http://192.168.10.102:8080/api";
+const apiUrl = process.env.BACKEND_URL;
 const authUrl = process.env.BACKEND_AUTH_URL;
 
 
@@ -38,8 +38,7 @@ const Requests = {
     }),
     patch: (url: Url, endpoint: string, body: {}) => axios.patch(baseUrl(url) + endpoint, body, {withCredentials: true, headers: {'Content-Type': 'multipart/form-data'}}),
     delete: (url:string) => axios.delete(url),
-    auth: () => axios.get(authUrl, { withCredentials: true }),
+    auth: (headers: {}) => axios.get("https://www.google.apis.com/userinfo/v2/me", { withCredentials: true, headers: headers }),
     test: (url: string, body: {}) => axios.post(url,body)
-
 }
 export default Requests;
