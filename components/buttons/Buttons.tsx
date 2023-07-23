@@ -14,6 +14,7 @@ type ButtonProps = {
 const style = StyleSheet.create({
     button: {
         marginTop: 15,
+        backgroundColor: "black",
         marginBottom: 15,
         borderWidth: 1, 
         borderColor: "white", 
@@ -27,6 +28,7 @@ const style = StyleSheet.create({
     },
     buttonWithIcon: {
         marginTop: 15,
+        backgroundColor: "black",
         marginBottom: 15,
         borderWidth: 1, 
         borderColor: "white", 
@@ -40,6 +42,7 @@ const style = StyleSheet.create({
     },
     disabledButton: {
         marginTop: 15,
+        backgroundColor: "black",
         marginBottom: 15,
         display: "flex", 
         width: 320, 
