@@ -1,5 +1,5 @@
 {
-  "name": "fitcal-frontend",
+  "name": "fitcal",
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
@@ -12,10 +12,16 @@
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
+    "@react-navigation/native-stack": "^6.9.13",
     "@types/react-native-vector-icons": "^6.4.13",
     "axios": "^1.4.0",
     "expo": "~48.0.15",
+    "expo-auth-session": "~4.0.3",
+    "expo-crypto": "~12.2.1",
+    "expo-random": "~13.1.1",
     "expo-status-bar": "~1.4.4",
+    "expo-updates": "~0.16.4",
+    "expo-web-browser": "~12.1.1",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "react-native-dotenv": "^3.4.8",
@@ -23,16 +29,13 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.10",
-    "expo-auth-session": "~4.0.3",
-    "expo-crypto": "~12.2.1",
-    "expo-web-browser": "~12.1.1",
-    "expo-random": "~13.1.1",
-    "expo-updates": "~0.16.4"
+    "webpack-dev-server": "^4.15.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@types/react": "~18.0.14",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "webpack-cli": "^5.1.4"
   },
   "private": true
 }
